@@ -1,29 +1,39 @@
 import React, { useState } from "react"
 import { useGlobalContext } from "../../context/context"
+import { Button } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 
 const UserRegistration = () => {
-  const { handleUserRegistration } = useGlobalContext()
+  const navigate = useNavigate()
   const [fName, setFName] = useState("")
   const [lName, setLName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPW, setConfirmPW] = useState("")
   const [userType, setUserType] = useState("artist")
+  const [error, setError] = useState({ message: "", show: false })
+  // const [regError, setRegError] = useState({ messages: [], show: false })
+
+  const handleUserRegistration = (
+    fName,
+    lName,
+    email,
+    password,
+    confirmPW,
+    userType
+  ) => {
+    console.log("Submitting!")
+    console.log(fName, lName, email, password, confirmPW, userType)
+    if (!fName || !lName || !email || !password || !password) {
+      console.log("Dont leave a thing empty!")
+      return setError({ message: "Dont leave a thing empty!", show: true })
+    }
+    setError({ message: "", show: false })
+  }
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault()
-        handleUserRegistration(
-          fName,
-          lName,
-          email,
-          password,
-          confirmPW,
-          userType
-        )
-      }}
-    >
+    <form className="registration-form">
+      <h2>Sign up for an account!</h2>
       <div className="form-group">
         <label htmlFor="fName">First Name: </label>
         <input
@@ -85,7 +95,22 @@ const UserRegistration = () => {
           <option value="employer">Employer</option>
         </select>
       </div>
-      <button>Register</button>
+      <Button
+        variant="contained"
+        onClick={() => {
+          handleUserRegistration(
+            fName,
+            lName,
+            email,
+            password,
+            confirmPW,
+            userType
+          )
+          navigate("/dashboard")
+        }}
+      >
+        Register
+      </Button>
     </form>
   )
 }

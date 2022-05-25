@@ -1,8 +1,17 @@
-import React from 'react'
+import React from "react"
+import UserInfo from "../reusables/UserInfo"
+import { useGlobalContext } from "../../context/context"
 
 const Dashboard = () => {
+  
+
   return (
-    <div>Dashboard</div>
+    <div>
+      <div className="user-controls-container">
+        <UserInfo />
+      </div>
+
+    </div>
   )
 }
 
