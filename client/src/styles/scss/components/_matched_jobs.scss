@@ -3,6 +3,23 @@
 }
 
 .matched-jobs-container {
+  padding: 1rem;
+  border: 0.2rem solid hsl(var(--color-black));
+  flex-direction: column;
+  overflow-y: scroll;
+  max-height: 50rem;
+
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: hsl(var(--color-black));
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--color-white));
+  }
 
   .matched-job {
     flex-direction: column;
@@ -27,6 +44,7 @@
     gap: 1rem;
 
     li {
+      white-space: nowrap;
       font-size: 1.2rem;
       color: hsl(var(--color-white));
       background-color: black;

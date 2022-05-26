@@ -33,6 +33,10 @@ const UserSchema = new mongoose.Schema(
       required: [true, "You must assign a role to this user!"],
       enum: ["artist", "employer"],
     },
+    isFeatured: {
+      type: Boolean,
+      default: false
+    }
   },
   { timestamps: true }
 )

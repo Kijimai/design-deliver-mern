@@ -10,6 +10,18 @@ html {
   box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+  width: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: hsl(var(--color-black));
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--color-white));
+}
+
 ul,
 li {
   list-style: none;

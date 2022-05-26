@@ -1,0 +1,12 @@
+.dashboard-container {
+  display: flex;
+  gap: 2rem;
+
+  .user-controls-container {
+    flex: 2;
+  }
+
+  .dashboard-right {
+    flex: 3;
+  }
+}
