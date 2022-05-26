@@ -6,7 +6,10 @@ const Navigator = () => {
       <Link to="/">Design Deliver</Link>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/all_artists">Find Artists</Link>
+        </li>
+        <li>
+          <Link to="/all_jobs">Find Work</Link>
         </li>
         <li>
           {/* REMEMBER TO UPDATE THIS */}

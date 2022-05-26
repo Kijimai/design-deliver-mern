@@ -11,7 +11,7 @@ const AppContext = createContext()
 
 const AppProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState({fName: 'test', lName: 'test', email: 'test-email', userType: 'artist'})
 
   return (
     <AppContext.Provider

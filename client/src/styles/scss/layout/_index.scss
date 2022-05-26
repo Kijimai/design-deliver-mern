@@ -4,9 +4,9 @@
   gap: 2rem;
 
   .index-splash-image {
-    display: inline-block;
     flex: 2;
     max-height: 600px;
+    width: 100%;
     object-fit: cover;
   }
 }

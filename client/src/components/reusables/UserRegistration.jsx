@@ -4,6 +4,7 @@ import { Button } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 
 const UserRegistration = () => {
+  const { setCurrentUser } = useGlobalContext()
   const navigate = useNavigate()
   const [fName, setFName] = useState("")
   const [lName, setLName] = useState("")
@@ -12,7 +13,6 @@ const UserRegistration = () => {
   const [confirmPW, setConfirmPW] = useState("")
   const [userType, setUserType] = useState("artist")
   const [error, setError] = useState({ message: "", show: false })
-  // const [regError, setRegError] = useState({ messages: [], show: false })
 
   const handleUserRegistration = (
     fName,
@@ -28,6 +28,7 @@ const UserRegistration = () => {
       console.log("Dont leave a thing empty!")
       return setError({ message: "Dont leave a thing empty!", show: true })
     }
+    setCurrentUser({ fName, lName, email, password, confirmPW, userType })
     setError({ message: "", show: false })
   }
 
