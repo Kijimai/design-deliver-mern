@@ -8,10 +8,14 @@ import "./styles/app.css"
 import AllArtists from "./components/layout/AllArtists"
 import AllJobs from "./components/layout/AllJobs"
 import SingleArtist from "./components/layout/SingleArtist"
+import { useGlobalContext } from "./context/context"
 
 function App() {
+  const { globalError } = useGlobalContext()
+
   return (
     <Router>
+      {globalError && <p>{globalError.message}</p>}
       <Navigator />
       <main className="main-container">
         <Routes>

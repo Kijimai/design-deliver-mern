@@ -11,13 +11,23 @@ const AppContext = createContext()
 
 const AppProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [currentUser, setCurrentUser] = useState({fName: 'test', lName: 'test', email: 'test-email', userType: 'artist'})
+  const [globalError, setGlobalError] = useState({ message: "", show: false })
+  const [currentUser, setCurrentUser] = useState({
+    fName: "test",
+    lName: "test",
+    email: "test-email",
+    userType: "employer",
+  })
 
   return (
     <AppContext.Provider
       value={{
         currentUser,
         setCurrentUser,
+        isLoggedIn,
+        setIsLoggedIn,
+        globalError,
+        setGlobalError,
       }}
     >
       {children}

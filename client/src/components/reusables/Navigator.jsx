@@ -1,6 +1,9 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { useGlobalContext } from "../../context/context"
 const Navigator = () => {
+  const { isLoggedIn } = useGlobalContext()
+
   return (
     <nav className="navigator">
       <Link to="/">Design Deliver</Link>
@@ -15,9 +18,11 @@ const Navigator = () => {
           {/* REMEMBER TO UPDATE THIS */}
           <Link to="/dashboard">Dashboard</Link>
         </li>
-        <li>
-          <Link to="/"></Link>
-        </li>
+        {!isLoggedIn && (
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        )}
       </ul>
     </nav>
   )

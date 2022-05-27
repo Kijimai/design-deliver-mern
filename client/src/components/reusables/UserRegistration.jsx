@@ -4,7 +4,7 @@ import { Button } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 
 const UserRegistration = () => {
-  const { setCurrentUser } = useGlobalContext()
+  const { setCurrentUser, setIsLoggedIn, setGlobalError } = useGlobalContext()
   const navigate = useNavigate()
   const [fName, setFName] = useState("")
   const [lName, setLName] = useState("")
@@ -30,6 +30,8 @@ const UserRegistration = () => {
     }
     setCurrentUser({ fName, lName, email, password, confirmPW, userType })
     setError({ message: "", show: false })
+    setGlobalError({ message: "", show: false })
+    setIsLoggedIn(true)
   }
 
   return (

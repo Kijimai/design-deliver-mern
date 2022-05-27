@@ -15,7 +15,7 @@ const AllArtists = () => {
     <section className="all-artists-section">
       <h2>All artists</h2>
       <div className="all-artists-container">
-        {allArtists &&
+        {allArtists ? (
           allArtists.map((artist, index) => {
             return (
               <Link to={`/artist/${artist._id}`}>
@@ -30,7 +30,10 @@ const AllArtists = () => {
                 </div>
               </Link>
             )
-          })}
+          })
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </section>
   )
