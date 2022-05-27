@@ -26,7 +26,17 @@ const UserSchema = new mongoose.Schema(
       minLength: [8, "Password length must be at least 8 characters long!"],
     },
     expertise: {
-      type: [String]
+      type: [String],
+      enum: [
+        "2d artist",
+        "3d artist",
+        "illustrator",
+        "game concept artist",
+        "film concept artist",
+        "2d animator",
+        "3d animator",
+        "matte painter",
+      ],
     },
     userType: {
       type: String,
@@ -35,8 +45,8 @@ const UserSchema = new mongoose.Schema(
     },
     isFeatured: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   { timestamps: true }
 )

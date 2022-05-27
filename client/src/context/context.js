@@ -10,13 +10,13 @@ import axios from "axios"
 const AppContext = createContext()
 
 const AppProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
   const [globalError, setGlobalError] = useState({ message: "", show: false })
   const [currentUser, setCurrentUser] = useState({
     fName: "test",
     lName: "test",
     email: "test-email",
-    userType: "employer",
+    userType: "artist",
   })
 
   return (

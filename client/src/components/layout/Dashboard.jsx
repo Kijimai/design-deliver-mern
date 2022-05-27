@@ -7,12 +7,17 @@ import { useNavigate } from "react-router-dom"
 const Dashboard = () => {
   const navigate = useNavigate()
   const { currentUser, isLoggedIn, setGlobalError } = useGlobalContext()
+
   if (!isLoggedIn) {
     setGlobalError({
       message: "You do not have permission to view this page!",
       show: true,
     })
     return navigate("/")
+  }
+
+  const postJob = () => {
+    console.log('Posting Job!')
   }
 
   return (

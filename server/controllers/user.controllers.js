@@ -38,9 +38,6 @@ module.exports.getOneUser = (req, res) => {
   })
 }
 
-// module.exports.updateUser = (req, res) => {
-
-// }
 
 module.exports.addUser = (req, res) => {
   const { fName, lName, email, password, userType } = req.body

@@ -1,56 +1,39 @@
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import axios from "axios"
 
 const MatchedJobs = () => {
+  const [foundJobs, setFoundJobs] = useState([])
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/all_projects")
+      .then((res) => {
+        setFoundJobs(res.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [])
+
   return (
     <div className="matched-jobs-container">
-      <section className="matched-job">
-        <div className="upper">
-          <h3>Job Name</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
-            accusantium, fugiat quam tenetur dolores assumenda reiciendis
-            dolorum perspiciatis odit. Placeat ipsum aspernatur sit odio
-            exercitationem!
-          </p>
-        </div>
-        <ul className="expertise-required-container">
-          <li>Illustrator</li>
-          <li>Animator</li>
-          <li>Games Concept Artist</li>
-        </ul>
-      </section>
-      <section className="matched-job">
-        <div className="upper">
-          <h3>Job Name</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
-            accusantium, fugiat quam tenetur dolores assumenda reiciendis
-            dolorum perspiciatis odit. Placeat ipsum aspernatur sit odio
-            exercitationem!
-          </p>
-        </div>
-        <ul className="expertise-required-container">
-          <li>Illustrator</li>
-          <li>Animator</li>
-          <li>Games Concept Artist</li>
-        </ul>
-      </section>
-      <section className="matched-job">
-        <div className="upper">
-          <h3>Job Name</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
-            accusantium, fugiat quam tenetur dolores assumenda reiciendis
-            dolorum perspiciatis odit. Placeat ipsum aspernatur sit odio
-            exercitationem!
-          </p>
-        </div>
-        <ul className="expertise-required-container">
-          <li>Illustrator</li>
-          <li>Animator</li>
-          <li>Games Concept Artist</li>
-        </ul>
-      </section>
+      {foundJobs &&
+        foundJobs.map((job, index) => {
+          return (
+            <section key={index} className="matched-job">
+              <div className="upper">
+                <h3>{job.title}</h3>
+                <p>{job.postContent}</p>
+              </div>
+              <ul className="expertise-required-container">
+                {job.neededExpertise.map((item) => {
+                  return <li>{item}</li>
+                })}
+              </ul>
+            </section>
+          )
+        })}
     </div>
   )
 }
