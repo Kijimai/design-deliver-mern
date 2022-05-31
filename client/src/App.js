@@ -8,6 +8,7 @@ import "./styles/app.css"
 import AllArtists from "./components/layout/AllArtists"
 import AllJobs from "./components/layout/AllJobs"
 import SingleArtist from "./components/layout/SingleArtist"
+import EditUser from "./components/layout/EditUser"
 import { useGlobalContext } from "./context/context"
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           {/* Temporary Route */}
           <Route path="/login" element={<UserLogin />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/edit" element={<EditUser />}/>
           <Route path="/proposal" element={<ProjectProposal />} />
           <Route path="/all_artists" element={<AllArtists />} />
           <Route path="/all_jobs" element={<AllJobs />} />

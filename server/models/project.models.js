@@ -25,6 +25,7 @@ const ProjectSchema = new mongoose.Schema(
         "film concept artist",
         "2d animator",
         "3d animator",
+        "matte painter"
       ],
     },
   },

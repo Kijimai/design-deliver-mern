@@ -31,13 +31,26 @@ module.exports.getAllArtists = (req, res) => {
 }
 
 module.exports.getOneUser = (req, res) => {
-  User.findOne({_id: req.params.id}).then(foundUser => {
-    return res.json(foundUser)
-  }).catch(error => {
-    return res.status(400).json({message: "Something went wrong!", error})
-  })
+  User.findOne({ _id: req.params.id })
+    .then((foundUser) => {
+      return res.json(foundUser)
+    })
+    .catch((error) => {
+      return res.status(400).json({ message: "Something went wrong!", error })
+    })
 }
 
+module.exports.updateUser = (req, res) => {
+  User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+    .then((updatedUser) => {
+      return res.json(updatedUser)
+    })
+    .catch((error) => {
+      return res
+        .status(400)
+        .json({ message: "Something went wrong during update!", error })
+    }) 
+}
 
 module.exports.addUser = (req, res) => {
   const { fName, lName, email, password, userType } = req.body
@@ -55,4 +68,3 @@ module.exports.addUser = (req, res) => {
       return res.status(400).json({ message: "Something went wrong!", error })
     })
 }
-
