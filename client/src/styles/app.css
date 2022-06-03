@@ -153,7 +153,50 @@ body {
   grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
 }
-
+.all-artists-section .all-artists-container .single-artist {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.all-artists-section .expertise-container li {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 1.2rem;
+  color: hsl(var(--color-white));
+  background-color: black;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  border: 0.2rem solid hsl(var(--color-white));
+}
+.all-artists-section .featured-artist-container {
+  margin: 0 auto;
+  border: 0.2rem solid black;
+  padding: 2rem;
+  max-width: 80rem;
+}
+.all-artists-section .featured-artist-container h2,
+.all-artists-section .featured-artist-container .artist-name {
+  text-align: center;
+}
+.all-artists-section .featured-artist-container .artist-name {
+  font-size: 1.7rem;
+}
+.all-artists-section .featured-artist-container a {
+  font-size: 1.8rem;
+}
+.all-artists-section .featured-artist-container .featured-artist-info {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.all-artists-section .featured-artist-container .featured-artist-info p {
+  font-size: 1.4rem;
+}
+.all-artists-section .featured-artist-container .featured-artist-info .right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 .dashboard-container {
   display: flex;
   gap: 2rem;

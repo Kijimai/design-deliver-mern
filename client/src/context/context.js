@@ -13,10 +13,13 @@ const AppProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(true)
   const [globalError, setGlobalError] = useState({ message: "", show: false })
   const [currentUser, setCurrentUser] = useState({
-    fName: "test",
-    lName: "test",
-    email: "test-email",
-    userType: "artist",
+    _id: "6296db58c77ec80fb0e37f95",
+    fName: "Carson",
+    lName: "Reynolds",
+    email: "Shea.Lowe69@hotmail.com",
+    avatar:
+      "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1038.jpg",
+    userType: "employer",
   })
 
   return (

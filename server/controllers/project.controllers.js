@@ -12,6 +12,7 @@ module.exports.createProject = (req, res) => {
 
 module.exports.getAllProjects = (req, res) => {
   Project.find({})
+    .populate("author", 'fName lName avatar _id userType')
     .then((foundProjects) => {
       return res.json(foundProjects)
     })
@@ -30,6 +31,7 @@ module.exports.getOneProject = (req, res) => {
     })
 }
 
+// Dev method only
 module.exports.clearProjects = (req, res) => {
   Project.deleteMany({})
     .then((res) => {

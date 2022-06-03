@@ -40,6 +40,18 @@ module.exports.getOneUser = (req, res) => {
     })
 }
 
+module.exports.getOneFeaturedArtist = (req, res) => {
+  User.find({ userType: "artist", isFeatured: true })
+    .then((foundArtists) => {
+      const featuredArtist =
+        foundArtists[Math.floor(Math.random() * foundArtists.length)]
+      return res.json(featuredArtist)
+    })
+    .catch((error) => {
+      return res.status(400).json({ message: "Something went wrong!", error })
+    })
+}
+
 module.exports.updateUser = (req, res) => {
   User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
     .then((updatedUser) => {
@@ -49,7 +61,7 @@ module.exports.updateUser = (req, res) => {
       return res
         .status(400)
         .json({ message: "Something went wrong during update!", error })
-    }) 
+    })
 }
 
 module.exports.addUser = (req, res) => {

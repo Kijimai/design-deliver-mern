@@ -32,17 +32,42 @@ const seedDatabase = async () => {
   for (let i = 1; i < 100; i++) {
     const randomNum = Math.floor(Math.random() * 100) + 1
 
-    let userRole = randomNum <= 25 ? "employer" : "artist"
+    let isFeaturedVal = Math.floor(Math.random() * 2)
 
     let fName = faker.name.firstName()
     let lName = faker.name.lastName()
     let email = faker.internet.email()
-    let expertise = expertiseList[Math.floor(Math.random() * expertiseList.length)]
+    let expertise =
+      expertiseList[Math.floor(Math.random() * expertiseList.length)]
+    let bio = faker.lorem.paragraphs()
     let password = faker.internet.password()
     let avatar = faker.image.avatar()
-    let userType = userRole
+    let isFeatured = isFeaturedVal === 1 ? true : false
+    let userType = randomNum <= 25 ? "employer" : "artist"
 
-    await User.create({ fName, lName, email, avatar, expertise, password, userType })
+    if (userType === "employer") {
+      await User.create({
+        fName,
+        lName,
+        email,
+        avatar,
+        password,
+        userType,
+        bio,
+      })
+    } else {
+      await User.create({
+        fName,
+        lName,
+        email,
+        avatar,
+        expertise,
+        password,
+        isFeatured,
+        userType,
+        bio,
+      })
+    }
   }
 }
 

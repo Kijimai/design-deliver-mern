@@ -24,13 +24,13 @@ const SingleArtist = () => {
           <p>
             {foundUser.fName} {foundUser.lName}
           </p>
+          <img
+            src={foundUser.avatar}
+            alt={`${foundUser.fName} ${foundUser.lName}`}
+          />
           <div className="bio">
             <h3>Bio: </h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-              labore qui inventore eum a nam molestiae eaque voluptates soluta,
-              harum delectus nemo rem tempore itaque.
-            </p>
+            <p>{foundUser.bio}</p>
           </div>
           <h3>Expertise: </h3>
           <ul>
