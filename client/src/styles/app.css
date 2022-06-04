@@ -136,6 +136,14 @@ body {
   border: 0.2rem solid hsl(var(--color-white));
 }
 
+.job-post-form {
+  border: 0.2rem solid hsl(var(--color-black));
+  padding: 2rem;
+}
+.job-post-form .post-message {
+  width: 100%;
+}
+
 .forms-container {
   width: 100%;
   display: flex;

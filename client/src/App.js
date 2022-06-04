@@ -10,6 +10,7 @@ import AllJobs from "./components/layout/AllJobs"
 import SingleArtist from "./components/layout/SingleArtist"
 import EditUser from "./components/layout/EditUser"
 import { useGlobalContext } from "./context/context"
+import JobPosting from "./components/layout/JobPosting"
 
 function App() {
   const { globalError } = useGlobalContext()
@@ -23,7 +24,8 @@ function App() {
           {/* Temporary Route */}
           <Route path="/login" element={<UserLogin />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard/edit" element={<EditUser />}/>
+          <Route path="/dashboard/edit" element={<EditUser />} />
+          <Route path="/dashboard/post_job" element={<JobPosting />} />
           <Route path="/proposal" element={<ProjectProposal />} />
           <Route path="/all_artists" element={<AllArtists />} />
           <Route path="/all_jobs" element={<AllJobs />} />

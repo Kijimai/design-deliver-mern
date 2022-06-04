@@ -2,8 +2,9 @@ import React from "react"
 import UserInfo from "../reusables/UserInfo"
 import MatchedJobs from "../reusables/MatchedJobs"
 import MatchedArtists from "../reusables/MatchedArtists"
+import JobPostForm from "../reusables/JobPostForm"
 import { useGlobalContext } from "../../context/context"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -17,14 +18,13 @@ const Dashboard = () => {
     return navigate("/")
   }
 
-  const postJob = () => {
-    console.log('Posting Job!')
-  }
-
   return (
     <div className="dashboard-container">
       <div className="user-controls-container">
         <UserInfo />
+        {currentUser.userType === "employer" && (
+          <Link to="/dashboard/post_job">Post a Job</Link>
+        )}
       </div>
       <div className="dashboard-right">
         {currentUser.userType === "artist" && <MatchedJobs />}
