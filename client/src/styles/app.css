@@ -61,6 +61,7 @@ body {
 }
 
 .registration-form {
+  max-width: 30vw;
   min-width: 40rem;
   flex: 1;
   display: flex;
@@ -147,12 +148,13 @@ body {
 .forms-container {
   width: 100%;
   display: flex;
+  justify-content: space-between;
   gap: 2rem;
 }
 .forms-container .index-splash-image {
   flex: 2;
   max-height: 600px;
-  width: 100%;
+  max-width: 50%;
   object-fit: cover;
 }
 

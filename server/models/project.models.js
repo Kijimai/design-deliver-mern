@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const ProjectSchema = new mongoose.Schema(
+export const ProjectSchema = new mongoose.Schema(
   {
     author: {
       type: mongoose.Schema.Types.ObjectId,

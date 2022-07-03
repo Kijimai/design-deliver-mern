@@ -1,12 +1,13 @@
 .forms-container {
   width: 100%;
   display: flex;
+  justify-content: space-between;
   gap: 2rem;
 
   .index-splash-image {
     flex: 2;
     max-height: 600px;
-    width: 100%;
+    max-width: 50%;
     object-fit: cover;
   }
 }

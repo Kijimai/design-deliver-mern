@@ -1,3 +1,5 @@
+import { ProjectSchema } from "./project.models"
+
 const mongoose = require("mongoose")
 
 const UserSchema = new mongoose.Schema(
@@ -50,6 +52,8 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    projects: [ProjectSchema],
+    hiredArtists: [UserSchema]
   },
   { timestamps: true }
 )
