@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt")
 const mongoose = require("mongoose")
-import { ProjectSchema } from "./project.models"
+const { ProjectSchema } = require("./project.models")
 
 const UserSchema = new mongoose.Schema(
   {
@@ -53,7 +53,7 @@ const UserSchema = new mongoose.Schema(
       default: false,
     },
     projects: [ProjectSchema],
-    hiredArtists: [UserSchema],
+    hiredArtists: [this],
   },
   { timestamps: true }
 )

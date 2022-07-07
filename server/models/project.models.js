@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-export const ProjectSchema = new mongoose.Schema(
+const ProjectSchema = new mongoose.Schema(
   {
     author: {
       type: mongoose.Schema.Types.ObjectId,
@@ -25,11 +25,12 @@ export const ProjectSchema = new mongoose.Schema(
         "film concept artist",
         "2d animator",
         "3d animator",
-        "matte painter"
+        "matte painter",
       ],
     },
   },
   { timestamps: true }
 )
 
-module.exports.Project = mongoose.model("Project", ProjectSchema)
+const Project = mongoose.model("Project", ProjectSchema)
+module.exports = { Project, ProjectSchema }
