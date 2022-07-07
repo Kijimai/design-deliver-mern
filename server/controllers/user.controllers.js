@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
 const { User } = require("../models/user.models")
 
 module.exports.getAllUsers = (req, res) => {
@@ -64,19 +66,25 @@ module.exports.updateUser = (req, res) => {
     })
 }
 
-module.exports.register = (req, res) => {
+module.exports.register = async (req, res) => {
   const { fName, lName, email, password, userType } = req.body
-  User.create({
-    fName,
-    lName,
-    email,
-    password,
-    userType,
-  })
-    .then((createdUser) => {
-      return res.json(createdUser)
+  try {
+    User.create({
+      fName,
+      lName,
+      email,
+      password,
+      userType,
     })
-    .catch((error) => {
-      return res.status(400).json({ message: "Something went wrong!", error })
-    })
+      .then((createdUser) => {
+        const payload = { id: createdUser._id }
+        const userToken = jwt.sign(payload, process.env.JWT_SECRET)
+        return res.json(createdUser)
+      })
+      .catch((error) => {
+        return res.status(400).json({ message: "Something went wrong!", error })
+      })
+  } catch (err) {
+    res.status(400).json({ message: "Something went wrong!", err })
+  }
 }
