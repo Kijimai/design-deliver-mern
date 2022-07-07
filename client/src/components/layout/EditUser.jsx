@@ -19,7 +19,7 @@ const EditUser = () => {
 
   useEffect(() => {
     console.log("Fetching current user!")
-    axios.get(`http://localhost:8000/api/user/edit/:${id}`)
+    axios.get(`http://localhost:8000/api/users/edit/:${id}`)
   }, [])
 
   return (

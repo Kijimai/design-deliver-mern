@@ -8,7 +8,7 @@ const SingleArtist = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/user/${id}`)
+      .get(`http://localhost:8000/api/users/${id}`)
       .then((res) => {
         setFoundUser(res.data)
       })
