@@ -66,25 +66,18 @@ module.exports.updateUser = (req, res) => {
     })
 }
 
-module.exports.register = async (req, res) => {
-  const { fName, lName, email, password, userType } = req.body
-  try {
-    User.create({
-      fName,
-      lName,
-      email,
-      password,
-      userType,
+module.exports.register = (req, res) => {
+  console.log(req.body)
+  User.create(req.body)
+    .then((createdUser) => {
+      const payload = { id: createdUser._id }
+      const userToken = jwt.sign(payload, process.env.JWT_SECRET)
+
+      return res
+        .cookie("userToken", userToken, { httpOnly: true })
+        .json({ message: "Successfully registered user!", createdUser })
     })
-      .then((createdUser) => {
-        const payload = { id: createdUser._id }
-        const userToken = jwt.sign(payload, process.env.JWT_SECRET)
-        return res.json(createdUser)
-      })
-      .catch((error) => {
-        return res.status(400).json({ message: "Something went wrong!", error })
-      })
-  } catch (err) {
-    res.status(400).json({ message: "Something went wrong!", err })
-  }
+    .catch((error) => {
+      return res.status(400).json({ message: "Something went wrong!", error })
+    })
 }

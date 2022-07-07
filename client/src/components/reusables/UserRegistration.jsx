@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useGlobalContext } from "../../context/context"
 import { Button } from "@mui/material"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 const UserRegistration = () => {
   const { setCurrentUser, setIsLoggedIn, setGlobalError } = useGlobalContext()
@@ -14,24 +15,29 @@ const UserRegistration = () => {
   const [userType, setUserType] = useState("artist")
   const [error, setError] = useState({ message: "", show: false })
 
-  const handleUserRegistration = (
-    fName,
-    lName,
-    email,
-    password,
-    confirmPW,
-    userType
-  ) => {
-    console.log("Submitting!")
-    console.log(fName, lName, email, password, confirmPW, userType)
-    if (!fName || !lName || !email || !password || !password) {
+  const handleUserRegistration = async () => {
+    if (!fName || !lName || !email || !password || !password || !userType) {
       console.log("Dont leave a thing empty!")
       return setError({ message: "Dont leave a thing empty!", show: true })
     }
-    setCurrentUser({ fName, lName, email, password, confirmPW, userType })
-    setError({ message: "", show: false })
-    setGlobalError({ message: "", show: false })
-    setIsLoggedIn(true)
+    try {
+      const response = await axios.post("http://localhost:8000/api/users/new", {
+        fName,
+        lName,
+        email,
+        password,
+        confirmPassword: confirmPW,
+        userType,
+      })
+      console.log(response)
+      setCurrentUser({ fName, lName, email, password, confirmPW, userType })
+      setError({ message: "", show: false })
+      setGlobalError({ message: "", show: false })
+      setIsLoggedIn(true)
+      navigate("/dashboard")
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -109,11 +115,23 @@ const UserRegistration = () => {
             confirmPW,
             userType
           )
-          navigate("/dashboard")
         }}
       >
         Register
       </Button>
+      {error.show && (
+        <div
+          className="container"
+          style={{
+            backgroundColor: "red",
+            padding: "10px",
+            color: "white",
+            margin: "10px 0",
+          }}
+        >
+          <span>{error.message}</span>
+        </div>
+      )}
     </form>
   )
 }
