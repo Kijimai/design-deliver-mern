@@ -64,7 +64,7 @@ module.exports.updateUser = (req, res) => {
     })
 }
 
-module.exports.addUser = (req, res) => {
+module.exports.register = (req, res) => {
   const { fName, lName, email, password, userType } = req.body
   User.create({
     fName,

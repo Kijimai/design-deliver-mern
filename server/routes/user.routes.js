@@ -6,5 +6,5 @@ module.exports = (app) => {
   app.get("/api/user/:id", UserController.getOneUser)
   app.get("/api/featured_artist", UserController.getOneFeaturedArtist)
   app.put("/api/user/edit/:id", UserController.updateUser)
-  app.post("/api/users/new", UserController.addUser)
+  app.post("/api/users/new", UserController.register)
 }
