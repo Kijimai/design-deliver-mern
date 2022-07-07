@@ -1,3 +1,4 @@
+
 import { ProjectSchema } from "./project.models"
 
 const mongoose = require("mongoose")
@@ -53,9 +54,13 @@ const UserSchema = new mongoose.Schema(
       default: false,
     },
     projects: [ProjectSchema],
-    hiredArtists: [UserSchema]
+    hiredArtists: [UserSchema],
   },
   { timestamps: true }
 )
+
+UserSchema.virtual("confirmPassword")
+  .get(() => this.confirmPassword)
+  .set((value) => (this.confirmPassword = value))
 
 module.exports.User = mongoose.model("User", UserSchema)
