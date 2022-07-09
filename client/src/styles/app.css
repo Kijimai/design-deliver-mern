@@ -2,6 +2,10 @@
   --color-black: 0 0% 0%;
   --color-white: 0 0% 100%;
   --color-grey: 0 0% 50%;
+  --color-primary-light-teal: 180 100% 95%;
+  --color-primary-teal: 176 82% 81%;
+  --color-primary-dark-teal: 177 46% 47%;
+  --color-primary-darkest-teal: 174 31% 19%;
 }
 
 html {
@@ -43,6 +47,30 @@ body {
 .main-container {
   margin: 0 auto;
   max-width: 70%;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.4rem;
+  margin: 0.5rem 0;
+}
+.btn.light-teal {
+  background-color: hsl(var(--color-primary-light-teal));
+  color: hsl(var(--color-black));
+}
+.btn.teal {
+  background-color: hsl(var(--color-primary-teal));
+  color: hsl(var(--color-black));
+}
+.btn.dark-teal {
+  background-color: hsl(var(--color-primary-dark-teal));
+  color: hsl(var(--color-white));
+}
+.btn.darkest-teal {
+  background-color: hsl(var(--color-primary-darkest-teal));
+  color: hsl(var(--color-white));
 }
 
 .navigator {

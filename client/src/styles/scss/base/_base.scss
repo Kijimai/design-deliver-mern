@@ -38,3 +38,31 @@ body {
   margin: 0 auto;
   max-width: 70%;
 }
+
+.btn {
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.4rem;
+  margin: 0.5rem 0;
+  
+  &.light-teal {
+    background-color: hsl(var(--color-primary-light-teal));
+    color: hsl(var(--color-black));
+  }
+
+  &.teal {
+    background-color: hsl(var(--color-primary-teal));
+    color: hsl(var(--color-black));
+  }
+
+  &.dark-teal {
+    background-color: hsl(var(--color-primary-dark-teal));
+    color: hsl(var(--color-white));
+  }
+
+  &.darkest-teal {
+    background-color: hsl(var(--color-primary-darkest-teal));
+    color: hsl(var(--color-white));
+  }
+}

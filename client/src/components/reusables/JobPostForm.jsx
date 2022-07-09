@@ -69,7 +69,7 @@ const JobPostForm = () => {
           )
         })}
       </div>
-      <button>Post Job</button>
+      <button className="btn teal">Post Job</button>
     </form>
   )
 }
