@@ -10,4 +10,18 @@
     max-width: 50%;
     object-fit: cover;
   }
+
+  .login-reg-container {
+    flex: 1;
+    border: 0.2rem solid black;
+
+    &__btn-container {
+      display: flex;
+
+      button {
+        width: 100%;
+        padding: 1rem 0;
+      }
+    }
+  }
 }
