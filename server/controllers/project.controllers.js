@@ -1,18 +1,19 @@
 const { Project } = require("../models/project.models")
 
 module.exports.createProject = (req, res) => {
-  Project.create(req.body)
-    .then((createdProject) => {
-      return res.json(createdProject)
-    })
-    .catch((error) => {
-      return res.status(400).json({ message: "Something went wrong!", error })
-    })
+  console.log("Creating Project!")
+  // Project.create(req.body)
+  //   .then((createdProject) => {
+  //     return res.json(createdProject)
+  //   })
+  //   .catch((error) => {
+  //     return res.status(400).json({ message: "Something went wrong!", error })
+  //   })
 }
 
 module.exports.getAllProjects = (req, res) => {
   Project.find({})
-    .populate("author", 'fName lName avatar _id userType')
+    .populate("author", "fName lName avatar _id userType")
     .then((foundProjects) => {
       return res.json(foundProjects)
     })

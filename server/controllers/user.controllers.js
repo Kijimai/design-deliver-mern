@@ -1,3 +1,4 @@
+const { json } = require("express")
 const jwt = require("jsonwebtoken")
 const { User } = require("../models/user.models")
 
@@ -65,12 +66,21 @@ module.exports.updateUser = (req, res) => {
     })
 }
 
-module.exports.register = (req, res) => {
+module.exports.register = async (req, res) => {
   console.log(req.body)
+
+  const emailExists = await User.findOne({email: req.body.email})
+  
+  if(emailExists) {
+    return res.status(400).json({message: "A user with that email already exists!"})
+  }
+
   User.create(req.body)
     .then((createdUser) => {
       const payload = { id: createdUser._id }
-      const userToken = jwt.sign(payload, process.env.JWT_SECRET)
+      const userToken = jwt.sign(payload, process.env.JWT_SECRET, {
+        expiresIn: "7d",
+      })
 
       return res
         .cookie("userToken", userToken, { httpOnly: true })
@@ -80,3 +90,5 @@ module.exports.register = (req, res) => {
       return res.status(400).json({ message: "Something went wrong!", error })
     })
 }
+
+module.exports.logout = (req, res) => {}

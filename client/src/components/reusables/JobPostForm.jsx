@@ -20,6 +20,7 @@ const JobPostForm = () => {
   const handleJobPostSubmit = (e) => {
     e.preventDefault()
     console.log(neededExpertise)
+    axios.post("http://localhost:8000/api/projects/new", { neededExpertise })
   }
 
   const handleChange = (e) => {
