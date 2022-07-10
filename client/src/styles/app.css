@@ -88,38 +88,23 @@ body {
   gap: 2rem;
 }
 
-.login-form {
-  max-width: 30vw;
+.registration-form, .login-form {
   min-width: 40rem;
   flex: 1;
   display: flex;
   flex-direction: column;
   padding: 2rem;
 }
-.login-form .form-group * {
+.registration-form h2, .login-form h2 {
+  margin-bottom: 1rem;
+}
+.registration-form .form-group *, .login-form .form-group * {
   display: block;
-  margin-bottom: 0.4rem;
-}
-.login-form .form-group input,
-.login-form .form-group select {
-  padding: 1rem 0.5rem;
-  width: 100%;
-}
-
-.registration-form {
-  max-width: 30vw;
-  min-width: 40rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-}
-.registration-form .form-group * {
-  display: block;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.8rem;
 }
 .registration-form .form-group input,
-.registration-form .form-group select {
+.registration-form .form-group select, .login-form .form-group input,
+.login-form .form-group select {
   padding: 1rem 0.5rem;
   width: 100%;
 }
@@ -192,17 +177,20 @@ body {
 
 .forms-container {
   width: 100%;
+  min-height: 60rem;
   display: flex;
   justify-content: space-between;
   gap: 2rem;
 }
 .forms-container .index-splash-image {
   flex: 2;
-  max-height: 600px;
+  max-height: 60rem;
   max-width: 50%;
   object-fit: cover;
 }
 .forms-container .login-reg-container {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   border: 0.2rem solid black;
 }

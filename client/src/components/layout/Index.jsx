@@ -3,6 +3,7 @@ import UserRegistration from "../reusables/UserRegistration"
 import UserLogin from "../reusables/UserLogin"
 import { indexImages } from "../../utils/IndexImages"
 import { useGlobalContext } from "../../context/context"
+
 const Index = () => {
   const [showReg, setShowReg] = useState(true)
   const [showLogin, setShowLogin] = useState(false)

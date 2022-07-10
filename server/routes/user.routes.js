@@ -8,4 +8,6 @@ module.exports = (app) => {
   app.get("/api/featured_artist", UserController.getOneFeaturedArtist)
   app.put("/api/users/edit/:id", UserController.updateUser)
   app.post("/api/users/new", UserController.register)
+  app.post("/api/users/login", UserController.login)
+  app.get("/api/users/logout", UserController.logout)
 }

@@ -1,6 +1,6 @@
-const { json } = require("express")
 const jwt = require("jsonwebtoken")
 const { User } = require("../models/user.models")
+const bcrypt = require("bcrypt")
 
 module.exports.getAllUsers = (req, res) => {
   User.find({})
@@ -69,10 +69,12 @@ module.exports.updateUser = (req, res) => {
 module.exports.register = async (req, res) => {
   console.log(req.body)
 
-  const emailExists = await User.findOne({email: req.body.email})
-  
-  if(emailExists) {
-    return res.status(400).json({message: "A user with that email already exists!"})
+  const emailExists = await User.findOne({ email: req.body.email })
+
+  if (emailExists) {
+    return res
+      .status(400)
+      .json({ message: "A user with that email already exists!" })
   }
 
   User.create(req.body)
@@ -91,4 +93,27 @@ module.exports.register = async (req, res) => {
     })
 }
 
-module.exports.logout = (req, res) => {}
+module.exports.login = async (req, res) => {
+  console.log("hit")
+  const user = await User.findOne({ email: req.body.email })
+  try {
+    if (!user) {
+      return res
+        .status(400)
+        .json({ message: "No user with that email was found." })
+    }
+
+    const correctPassword = await bcrypt.compare(
+      req.body.password,
+      user.password
+    )
+    console.log(correctPassword)
+  } catch (err) {
+    return res.status(400).json({ message: "Something went wrong!", err })
+  }
+}
+
+module.exports.logout = (req, res) => {
+  res.clearCookie("userToken")
+  res.status(200).json({ message: "Successfully logged out!" })
+}
